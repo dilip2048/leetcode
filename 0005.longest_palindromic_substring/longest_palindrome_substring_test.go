@@ -6,16 +6,16 @@ import (
 )
 
 func TestLongestPalindromeBaseCase1(t *testing.T) {
-	s := "a"
-	str := longestPalindrome(s)
-	if !strings.EqualFold("a", str) {
+	s := "aa"
+	str := OptimizedLongestPalindrome(s)
+	if !strings.EqualFold("aa", str) {
 		t.Fail()
 	}
 }
 
 func TestLongestPalindromeBaseCase2(t *testing.T) {
 	s := "abc"
-	str := longestPalindrome(s)
+	str := NaiveLongestPalindrome(s)
 	if !strings.EqualFold("a", str) {
 		t.Fail()
 	}
@@ -23,23 +23,23 @@ func TestLongestPalindromeBaseCase2(t *testing.T) {
 
 func TestLongestPalindrome1(t *testing.T) {
 	s := "babad"
-	str := longestPalindrome(s)
+	str := NaiveLongestPalindrome(s)
 	if !strings.EqualFold("bab", str) {
 		t.Fail()
 	}
 }
 
 func TestLongestPalindrome2(t *testing.T) {
-	s := "aacabdkacaa"
-	str := longestPalindrome(s)
-	if !strings.EqualFold("bab", str) {
+	s := "aacaabdkacaa"
+	str := NaiveLongestPalindrome(s)
+	if !strings.EqualFold("aacaa", str) {
 		t.Fail()
 	}
 }
 
 func TestLongestPalindrome3(t *testing.T) {
 	s := "ac"
-	str := longestPalindrome(s)
+	str := OptimizedLongestPalindrome(s)
 	if !strings.EqualFold("a", str) {
 		t.Fail()
 	}

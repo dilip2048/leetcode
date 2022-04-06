@@ -1,48 +1,58 @@
 package _005_longest_palindromic_substring
 
-//naive solution
-//take two loop
-//i = slow pointer, j = faster point.
-// when i and jth element are equal, keep slowly moving the indexes to check if its palindrome
-// maintain maxPalindrome and currentPalindrome
-
-func longestPalindrome(s string) string {
-	i, j := 0, len(s)-1
-	//var longestPalindrome []byte
-	b := []byte(s)
-	var x, y int
-	flag := 0
-	for i < len(s)-1 {
-		for j = len(s) - 1; j > i; j-- {
-			if b[i] == b[j] {
-				x = i
-				y = j
-				flag = 1
-				// both pointer will move at the same pace
-				for x <= y {
-					//not palindrome
-					if b[x] != b[y] {
-						flag = 0
-						break
-					}
-					x++
-					y--
-				}
-				if flag == 1 {
-					break
+func NaiveLongestPalindrome(s string) string {
+	// all single character string is palindrome
+	maxSubStringLength := 1
+	startingIndex := 0
+	//this loop start from starting index of the substring
+	for i := 0; i < len(s); i++ {
+		// this loop is to point the end index of the substring
+		for j := i; j < len(s); j++ {
+			flag := 1
+			// this loop is to check if the substring is palindrome from ith of jth index of the string
+			for k := 0; k < (j-i+1)/2; k++ {
+				if s[i+k] != s[j-k] {
+					flag = 0
 				}
 			}
+			if flag == 1 && maxSubStringLength < (j-i+1) {
+				maxSubStringLength = j - i + 1
+				startingIndex = i
+			}
 		}
-		if flag == 1 {
-			break
+	}
+	palindromeString := s[startingIndex : startingIndex+maxSubStringLength]
+	return palindromeString
+}
+
+// OptimizedLongestPalindrome :Use expand Around the center approach to solve the problem.
+func OptimizedLongestPalindrome(s string) string {
+	//find palindrome for even length palindrome substring
+	maxStringLen := 1
+	start := 0
+	for i := 1; i < len(s); i++ {
+		low := i - 1
+		high := i
+		for low >= 0 && high < len(s) && s[low] == s[high] {
+			if high-low+1 > maxStringLen {
+				start = low
+				maxStringLen = high - low + 1
+			}
+			//expand arround the centre
+			low--
+			high++
 		}
-		i++
+		// check for palindrome for odd length substring
+		low = i - 1
+		high = i + 1
+		for low >= 0 && high < len(s) && s[low] == s[high] {
+			if high-low+1 > maxStringLen {
+				start = low
+				maxStringLen = high - low + 1
+			}
+			low--
+			high++
+		}
 	}
-	println(x)
-	println(y)
-	//if there are no palindrome then return first character
-	if i == len(s)-1 {
-		return string(b[0])
-	}
-	return string(b[i : j+1])
+	return s[start : start+maxStringLen]
 }
