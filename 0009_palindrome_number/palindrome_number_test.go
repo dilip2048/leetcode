@@ -1,4 +1,4 @@
-package main
+package _0009_palindrome_number
 
 import (
 	"testing"

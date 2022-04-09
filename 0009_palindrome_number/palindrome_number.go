@@ -1,31 +1,16 @@
-package main
+package _0009_palindrome_number
 
-import (
-	"strconv"
-)
-
+// this method checks if the given number is palindrome or not
 func isPalindrome(x int) bool {
-	s := strconv.Itoa(x)
-	l := len(s)
-	//base case
-	if l == 1 {
-		return true
+	i := x
+	reverse := 0
+	for i > 0 {
+		r := i % 10
+		reverse = r + reverse*10
+		i = i / 10
 	}
-	var low, high int
-	//odd case
-	if l%2 == 1 {
-		low = l/2 - 1
-		high = l/2 + 1
-	} else {
-		low = l/2 - 1
-		high = l / 2
-	}
-	for low >= 0 && high <= l-1 {
-		if s[low] != s[high] {
-			return false
-		}
-		low--
-		high++
+	if reverse != x {
+		return false
 	}
 	return true
 }
