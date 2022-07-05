@@ -1,4 +1,4 @@
-package _008_string_to_Integer
+package _008_String_To_Integer
 
 import "testing"
 

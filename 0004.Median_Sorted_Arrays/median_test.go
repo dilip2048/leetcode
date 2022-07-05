@@ -1,4 +1,4 @@
-package _004_median_sorted_arrays
+package _004_Median_Sorted_Arrays
 
 import "testing"
 

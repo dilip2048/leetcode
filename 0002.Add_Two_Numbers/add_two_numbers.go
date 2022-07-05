@@ -1,4 +1,4 @@
-package _002_add_two_numbers
+package _002_Add_Two_Numbers
 
 // ListNode is the structure of node of the linked list
 type ListNode struct {

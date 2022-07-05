@@ -1,4 +1,4 @@
-package _004_median_sorted_arrays
+package _004_Median_Sorted_Arrays
 
 // this method will find the median of two sorted array
 func findMedian(nums1, nums2 []int) float64 {

@@ -1,4 +1,4 @@
-package _005_longest_palindromic_substring
+package _005_Longest_Palindromic_Substring
 
 import (
 	"strings"
