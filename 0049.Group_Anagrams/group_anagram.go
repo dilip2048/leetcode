@@ -1,4 +1,4 @@
-package _049_group_anagrams
+package _049_Group_Anagrams
 
 import (
 	"sort"
